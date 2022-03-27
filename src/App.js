@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Temp from './components/Temp';
+      
+    
 function App() {
+  var today = new Date(),
+
+    time = today.getHours() ;
+    var classn="";
+    var cbox="";
+    if(time>=5&&time<=16){
+      classn="day";
+      cbox="box";
+    }
+          
+          if(time>=17&&time<=20){
+            classn="even"
+            cbox="ebox"
+          }
+          if (time >= 21 || (time >= 0 && time < 5)){
+            classn="night"
+            cbox="nbox";
+          }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div className={classn}>
+     
+     <Temp cls={cbox}/>
     </div>
   );
 }
